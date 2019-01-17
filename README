@@ -1,1 +1,12 @@
-junit5 测试5
+junit5 测试
+
+这里注明了junit5测试特别要注意的地方，涉及优化等方面，关于具体使用可以参考官网
+的demo。
+
+1. 如果你希望JUnit Jupiter在同一个实例上执行所有的测试方法，在你的测试类上加上注解@TestInstance(Lifecycle.PER_CLASS)即可。启用了该模式后，每一个测试类只会创建一次实例。因此，如果你的测试方法依赖实例变量存储的状态，你可能需要在@BeforeEach或@AfterEach方法中重置状态。
+
+"per-class"模式相比于默认的"per-method"模式有一些额外的好处。具体来说，使用了"per-class"模式之后，你就可以在非静态方法和接口的default方法上声明@BeforeAll和 @AfterAll。因此，"per-class"模式使得在@Nested测试类中使用@BeforeAll和@AfterAll注解成为了可能。
+
+如果你使用Kotlin编程语言来编写测试，你会发现通过将测试实例的生命周期模式切换到"per-class"更容易实现@BeforeAll和@AfterAll方法。
+
+
