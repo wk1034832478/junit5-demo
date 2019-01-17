@@ -1,8 +1,6 @@
 package top.hyywk.example;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import top.hyywk.annotation.DisplayTest;
 
 public class Example1 {
@@ -22,5 +20,20 @@ public class Example1 {
     @DisplayTest
     void test2() {
         Assertions.assertTrue(true,"测试未通过！");
+    }
+
+    /**
+     * 使用junit5假设（Assumption）,用途，当满足条件的时候，执行一段代码，否则不执行并测试 失败
+     */
+    @DisplayTest
+    void test3() {
+        /**
+         * 获取环境变量
+         */
+        String env = System.getenv("ENV");
+        System.out.println( "环境变量：" + env);
+        Assumptions.assumingThat( null == System.getenv("ENV"), () -> {
+            System.out.println( "男模打表达式" );
+        });
     }
 }
