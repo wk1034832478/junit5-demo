@@ -5,10 +5,9 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
- * 标准测试类
- * 任何使用元注解@Test、@RepeatedTest、@ParameterizedTest、@ TestFactory或@TestTemplate标注的实例方法都是一个测试方法。任何包含至少一种测试方法的顶级类或静态成员类都是一个测试类。
- * 任何一个测试方法是
- * 一个标准的测试类
+ * 标准测试类,该标准测试类是从官网直接copy得来
+ * 任何使用元注解@Test、@RepeatedTest、@ParameterizedTest、@ TestFactory或@TestTemplate标注的实例方法都是一个测试方法。
+ * 任何包含至少一种测试方法的顶级类或静态成员类都是一个测试类。任何一个测试方法是一个标准的测试类
  */
 public class StandardTest {
     @BeforeAll
