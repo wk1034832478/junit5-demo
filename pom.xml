@@ -37,7 +37,12 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
     <!-- junit集成hamcrest断言库 -->
     <dependency>
       <groupId>org.hamcrest</groupId>
@@ -65,9 +70,20 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
         </plugin>
+        <!-- 设置junit启动参数，常用设置是更改默认的生命周期为per_class -->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration>
+            <properties>
+              <configurationParameters>
+                junit.jupiter.conditions.deactivate = *
+                junit.jupiter.extensions.autodetection.enabled = true
+                junit.jupiter.testinstance.lifecycle.default = per_class
+                junit.jupiter.execution.parallel.enabled = true
+              </configurationParameters>
+            </properties>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>

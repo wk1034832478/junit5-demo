@@ -8,4 +8,4 @@ junit5 测试
 
 如果你使用Kotlin编程语言来编写测试，你会发现通过将测试实例的生命周期模式切换到"per-class"更容易实现@BeforeAll和@AfterAll方法。
 
-
+2. 上一个方法是为了能够加快测试的速度，这个注意点也是一样。默认情况下，junit5是以单线程进行测试的，如果需要将测试实例量大，可以更改为多线程进行测试。修改配置文件，junit.jupiter.execution.parallel.enabled = true
