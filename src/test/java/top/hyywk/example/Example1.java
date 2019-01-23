@@ -1,11 +1,17 @@
 package top.hyywk.example;
 
+
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import top.hyywk.annotation.DisplayTest;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.BooleanSupplier;
+import java.util.stream.Stream;
 
 public class Example1 {
     /**
@@ -71,4 +77,26 @@ public class Example1 {
         System.out.println( string );
         Assertions.assertTrue( true, "ok");
     }
+
+    /**
+     * 参数化测试，使用工厂函数提供参数数据源
+     */
+    @ParameterizedTest
+    @MethodSource("stringIntAndListProvider")
+    void test6(List<String> strs1, List<String> strs2) {
+        System.out.println(strs1);
+        System.out.println(strs2);
+    }
+
+    /**
+     * 为测试提供数据源
+     * @return 参数流（Stream）
+     */
+    static Stream<Arguments> stringIntAndListProvider() {
+        return Stream.of(
+                Arguments.of(Arrays.asList("aaa", "b"), Arrays.asList("a", "b")),
+                Arguments.of(Arrays.asList("aaaa", "b"), Arrays.asList("x", "y"))
+        );
+    }
+
 }
